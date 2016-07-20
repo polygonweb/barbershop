@@ -1,0 +1,31 @@
+.social {}
+
+	.social__link {
+		margin: 0 3px;
+		position: relative;
+		display: inline-block;
+		vertical-align: top;
+		overflow: hidden;
+		width: 43px;
+		font-size: 0;
+	}
+
+		.social__link::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			font-size: 43px;
+			width: 3em;
+			height: 2em;
+			background: url("../img/socials.png") no-repeat;
+			transition: .2s;
+		}
+
+			.social__link:hover::before {
+				top: -1em;
+			}
+
+		.social__link_vk::before { left: 0;    }
+		.social__link_fb::before { left: -1em; }
+		.social__link_in::before { left: -2em; }

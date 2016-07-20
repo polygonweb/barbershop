@@ -1,0 +1,27 @@
+/**
+ * Список новостей на главной
+ */
+.news-list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+	.news-list__item {
+		margin-bottom: 26px;
+	}
+
+
+.news-article {}
+
+	.news-article__text {
+		display: block;
+	}
+
+	.news-article__date {
+		display: block;
+		font-family: "Georgia", serif;
+		font-weight: normal;
+		font-style: italic;
+		text-transform: none;
+	}

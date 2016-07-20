@@ -1,0 +1,32 @@
+.features {
+	margin: 0 0 84px;
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
+	font-weight: bold;
+	color: #fff;
+}
+
+	.features__item {
+		box-sizing: border-box;
+		display: inline-block;
+		vertical-align: top;
+		width: 33.3333%;
+		padding: 0 27px;
+	}
+
+	.features__text {
+		margin: 0;
+	}
+
+	.features__title {}
+
+		.features__title:after {
+			content: '';
+			margin: 15px auto 33px;
+			transform: rotate(45deg);
+			display: block;
+			width: 20px;
+			height: 20px;
+			background: #fff;
+		}

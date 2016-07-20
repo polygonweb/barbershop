@@ -1,0 +1,9 @@
+.logo {
+	margin: 57px auto 19px;
+	padding: 0;
+	width: 368px;
+	height: 204px;
+	font-size: 0;
+	color: transparent;
+	background: url("../img/logo.png") no-repeat;
+}

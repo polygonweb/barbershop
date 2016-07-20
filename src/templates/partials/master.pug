@@ -1,0 +1,58 @@
+include mixins.pug
+
+doctype html
+
+<!--[if lt IE 8]>
+<html class="no-js ie ltie8 ltie9 ltie10" lang="ru">
+<![endif]-->
+
+<!--[if IE 8]>
+<html class="no-js ie ie8 ltie9 ltie10" lang="ru">
+<![endif]-->
+
+<!--[if IE 9]>
+<html class="no-js ie gtie8 ie9 ltie10" lang="ru">
+<![endif]-->
+
+!= "<!--[if (gt IE 9)|!(IE)]><!-->"
+html(class="no-js", lang="ru")
+	= '\n'
+	!= "<!--<![endif]-->"
+
+	block blockHead
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=960, shrink-to-fit=no')
+
+		block blockHeadCSS
+			link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,cyrillic")
+			link(rel="stylesheet", href="css/main.css")
+
+		block blockHeadJS
+			+ie("if lt IE 9")
+				<script src="js/html5shiv.min.js"></script>
+				<script src="js/respond.min.js"></script>
+				<script src="js/nwmatcher-1.2.5.js"></script>
+				<script src="js/selectivizr-min.js"></script>
+
+		block blockTitle
+		- var title = 'Barbershop. ' + pageTitle
+		title #{title}
+
+	block blockPage
+	body.page(class=classNames)
+
+		- var menuItems = ['главная', 'информация', 'новости', 'прайс-лист', 'магазин', 'контакты'];
+		//- содержит миксин для подключения шапки
+		include ../partials/header.pug
+		+pageHeader(menuItems, pageTitle)
+
+		main.page-content
+			.container
+				block pageContent
+
+		include ../partials/footer.pug
+
+		block blockBodyJS
+			//- script(src="js/scripts.js")

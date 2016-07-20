@@ -1,0 +1,16 @@
+mixin pageHeader(menuItems, activeItem)
+	header.page-header
+		.page-header__inner.container
+			nav.page-header__nav
+				ul.nav
+					each item in menuItems
+						if item === activeItem.toLowerCase()
+							li.nav__item.nav__item_active
+								a(href="#404").nav__link #{item}
+						else
+							li.nav__item
+								a(href="#404").nav__link #{item}
+
+			.page-header__user
+				ul.nav
+					a(href="#404").nav__link.enter-link Вход

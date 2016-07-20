@@ -1,0 +1,43 @@
+.main-widget {
+	margin-bottom: 34px;
+	position: relative;
+	min-height: 278px;
+	background: url("../img/light-pattern.png") #f8f5f2;
+}
+
+	.main-widget::before {
+		content: '';
+		position: absolute;
+		top:    0px;
+		bottom: 0px;
+		left: 0;
+		right: 0;
+		margin: auto;
+		height: 278px;
+		width: 8px;
+		background: url("../img/block-shadow.png") no-repeat;
+	}
+
+	.main-widget__cell {
+		position: relative;
+		display: inline-block;
+		vertical-align: top;
+		box-sizing: border-box;
+		width: 50%;
+		/* отступ меньше макетного, чтобы заголовки влазили в одну строку */
+		padding: 47px 70px 54px;
+	}
+
+
+.widget__controls {
+	margin: 0 -10px;
+}
+
+	.widget__control {
+		margin: 0 10px 20px;
+		width: calc(50% - 20px);
+	}
+
+	.widget__control_full {
+		width: calc(100% - 20px);
+	}

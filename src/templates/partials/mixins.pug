@@ -1,0 +1,8 @@
+//- mixin for IE conditional comment
+mixin ie(condition)
+	= '\n'
+	| <!--[!{condition}]>
+	block
+	= '\n'
+	| <![endif]-->
+	
