@@ -11,6 +11,10 @@
 		margin-bottom: 26px;
 	}
 
+	.news-list__controls {
+		padding-top: 5px;
+	}
+
 
 .news-article {}
 

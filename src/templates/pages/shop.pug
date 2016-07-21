@@ -1,0 +1,95 @@
+extends ../partials/master.pug
+
+block blockTitle
+	- var pageTitle = 'магазин'
+
+block prepend blockHeadCSS
+
+block append blockHeadCSS
+
+block prepend blockHeadJS
+
+block append blockHeadJS
+
+block prepend blockBodyJS
+
+block append blockBodyJS
+
+block blockPage
+	- var classNames = ''
+
+block append pageContent
+
+	h1.title barbershop borodinski — магазин
+
+	ul.breadcrumbs
+		li.breadcrumbs__item
+			a(href="#404").breadcrumbs__text главная
+		li.breadcrumbs__item
+			a(href="#404").breadcrumbs__text магазин
+		li.breadcrumbs__item
+			a(href="#404").breadcrumbs__text средства для ухода
+
+
+	.shop-list
+		form.shop-list__filter.filter
+			style
+				| .control {
+				| 	display: block;
+				| 	margin-bottom: 10px;
+				| }
+			fieldset.filter__set
+				legend.sub-title производители
+				label.control.control_checkbox
+					input.control__input(type="checkbox", checked)
+					span.control__icon
+					span.control__text Baxter of California
+
+				label.control.control_checkbox
+					input.control__input(type="checkbox", checked)
+					span.control__icon
+					span.control__text Mr Natty
+
+				label.control.control_checkbox
+					input.control__input(type="checkbox", checked)
+					span.control__icon
+					span.control__text Suavecito
+
+				label.control.control_checkbox
+					input.control__input(type="checkbox", checked)
+					span.control__icon
+					span.control__text Suavecito
+
+				label.control.control_checkbox
+					input.control__input(type="checkbox", checked)
+					span.control__icon
+					span.control__text Malin+Goetz
+
+				label.control.control_checkbox
+					input.control__input(type="checkbox", checked)
+					span.control__icon
+					span.control__text Malin+Goetz
+
+				label.control.control_checkbox
+					input.control__input(type="checkbox", checked)
+					span.control__icon
+					span.control__text Murray’s
+
+				label.control.control_checkbox
+					input.control__input(type="checkbox", checked)
+					span.control__icon
+					span.control__text American Crew
+
+				label.control.control_radio
+					input.control__input(type="radio", name="radio-name")
+					span.control__icon
+					span.control__text American Crew
+
+				label.control.control_radio
+					input.control__input(type="radio", name="radio-name")
+					span.control__icon
+					span.control__text American Crew
+
+			fieldset.filter__set
+				legend.sub-title группы товаров
+		.shop-list__content

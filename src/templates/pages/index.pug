@@ -43,7 +43,7 @@ block append pageContent
 
 	.main-widget
 		.main-widget__cell
-			h2.title новости
+			h2.main-widget__title.title новости
 			ul.news-list
 				li.news-list__item.news-article
 					a(href="#404").text-link.news-article__text нам наконец завезли ягермайстер! теперь вы можете пропустить стаканчик во время стрижки
@@ -57,13 +57,13 @@ block append pageContent
 					a(href="#404").text-link.news-article__text нам наконец завезли ягермайстер! теперь вы можете пропустить стаканчик во время стрижки
 					time(datetime="2014-08-12").news-article__date 12 августа
 
-				.widget__controls
-					a(href="#404").btn.widget__control все новости
+			.widget__controls.news-list__controls
+				a(href="#404").btn.widget__control все новости
 
 
 
 		.main-widget__cell
-			h2.title фотогалерея
+			h2.main-widget__title.title фотогалерея
 			.widget-gallery
 				.widget-gallery__list
 					figure.widget-gallery__item(style="background-image: url('img/gallery-item.jpg')").widget-gallery__item_active
@@ -75,14 +75,14 @@ block append pageContent
 
 	.main-widget
 		.main-widget__cell
-			h2.title контактная информация
-			p
+			h2.main-widget__title.title контактная информация
+			.paragraph
 				div barbershop «borodinski»
 				div адрес: г. москва, ул. собаки павлова, д. 13
 				div
 					a(href="tel:+749566602666").text-link +7 (495) 666-02-666
 
-			p
+			.paragraph
 				div ВРЕМЯ РАБОТЫ:
 				div ПН — ПТ: С 10:00 ДО 22:00
 				div СБ — ВС: С 10:00 ДО 19:00
@@ -92,8 +92,8 @@ block append pageContent
 				a(href="#404").btn.widget__control обратная связь
 
 		.main-widget__cell
-			h2.title записаться
-			p укажите желаемую дату и время и мы свяжемся с вами для подтверждения брони
+			h2.main-widget__title.title записаться
+			p.paragraph укажите желаемую дату и время и мы свяжемся с вами для подтверждения брони
 			form(action="", name="")
 				.widget__controls
 					input.input.widget__control(name="", value="", placeholder="дата")

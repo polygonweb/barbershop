@@ -28,6 +28,10 @@
 		padding: 47px 70px 54px;
 	}
 
+	.main-widget__title {
+		margin-bottom: 24px;
+	}
+
 
 .widget__controls {
 	margin: 0 -10px;
