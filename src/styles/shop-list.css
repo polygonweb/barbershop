@@ -1,0 +1,25 @@
+.shop-list {}
+
+	.shop-list__filter,
+	.shop-list__content {
+		box-sizing: border-box;
+		display: inline-block;
+		vertical-align: top;
+		padding: 0 10px;
+	}
+
+	.shop-list__filter {
+		width: 25%;
+	}
+	.shop-list__content {
+		width: 57%;
+	}
+
+
+.filter {}
+
+	.filter__set {
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}

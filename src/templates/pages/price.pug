@@ -1,0 +1,60 @@
+extends ../partials/master.pug
+
+block blockTitle
+	- var pageTitle = 'Прайс-лист'
+
+block prepend blockHeadCSS
+
+block append blockHeadCSS
+
+block prepend blockHeadJS
+
+block append blockHeadJS
+
+block prepend blockBodyJS
+
+block append blockBodyJS
+
+block blockPage
+	- var classNames = ''
+
+block append pageContent
+
+	h1.title barbershop borodinski — прайс-лист
+
+	ul.breadcrumbs
+		li.breadcrumbs__item
+			a(href="#404").breadcrumbs__text главная
+		li.breadcrumbs__item
+			a(href="#404").breadcrumbs__text прайс-лист
+
+
+	h2.heading истинно мужская классика
+
+	.grid
+		.grid__cell.grid__cell_half
+			h2.sub-title мы используем только  лучшие средства:
+			ul.list.list_expand
+				li Baxter of California
+				li Mr Natty
+				li Suavecito
+				li Malin+Goetz
+
+		.grid__cell.grid__cell_half
+			h2.sub-title цены на услуги наших мастеров:
+			table.table
+				tbody
+					tr
+						th стрижка
+						td 1500 р.
+					tr
+						th стрижка бороды
+						td 500 р.
+					tr
+						th накрутка усов
+						td 350 р.
+
+	h2.sub-title несколько слов о нас:
+	.grid
+		.grid__cell.grid__cell_half Наша парикмахерская занимается исключительно мужскими стрижками. Стрижка каждого клиента для нас - это уникальная и продуманная до мелочей работа. Мы не работаем на количество, мы делаем качество.
+		.grid__cell.grid__cell_half Наша парикмахерская занимается исключительно мужскими стрижками. Стрижка каждого клиента для нас - это уникальная и продуманная до мелочей работа. Мы не работаем на количество, мы делаем качество.
