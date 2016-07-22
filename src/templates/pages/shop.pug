@@ -33,63 +33,141 @@ block append pageContent
 
 	.shop-list
 		form.shop-list__filter.filter
-			style
-				| .control {
-				| 	display: block;
-				| 	margin-bottom: 10px;
-				| }
 			fieldset.filter__set
 				legend.sub-title производители
-				label.control.control_checkbox
+				label.control.control_checkbox.filter__control
 					input.control__input(type="checkbox", checked)
 					span.control__icon
 					span.control__text Baxter of California
 
-				label.control.control_checkbox
+				label.control.control_checkbox.filter__control
 					input.control__input(type="checkbox")
 					span.control__icon
 					span.control__text Mr Natty
 
-				label.control.control_checkbox
+				label.control.control_checkbox.filter__control
 					input.control__input(type="checkbox", checked)
 					span.control__icon
 					span.control__text Suavecito
 
-				label.control.control_checkbox
-					input.control__input(type="checkbox", checked, disabled)
+				label.control.control_checkbox.filter__control
+					input.control__input(type="checkbox", checked)
 					span.control__icon
 					span.control__text Suavecito
 
-				label.control.control_checkbox
+				label.control.control_checkbox.filter__control
 					input.control__input(type="checkbox")
 					span.control__icon
 					span.control__text Malin+Goetz
 
-				label.control.control_checkbox
-					input.control__input(type="checkbox", disabled)
+				label.control.control_checkbox.filter__control
+					input.control__input(type="checkbox", checked)
 					span.control__icon
 					span.control__text Malin+Goetz
 
-				label.control.control_checkbox
+				label.control.control_checkbox.filter__control
 					input.control__input(type="checkbox", checked)
 					span.control__icon
 					span.control__text Murray’s
 
-				label.control.control_checkbox
+				label.control.control_checkbox.filter__control
 					input.control__input(type="checkbox", checked, disabled)
-					span.control__icon
-					span.control__text American Crew
-
-				label.control.control_radio
-					input.control__input(type="radio", name="radio-name")
-					span.control__icon
-					span.control__text American Crew
-
-				label.control.control_radio
-					input.control__input(type="radio", name="radio-name")
 					span.control__icon
 					span.control__text American Crew
 
 			fieldset.filter__set
 				legend.sub-title группы товаров
+
+				label.control.control_radio.filter__control
+					input.control__input(type="radio", name="product-category-group")
+					span.control__icon
+					span.control__text Бритвенные  принадлежности
+
+				label.control.control_radio.filter__control
+					input.control__input(type="radio", name="product-category-group")
+					span.control__icon
+					span.control__text Средства для ухода
+
+				label.control.control_radio.filter__control
+					input.control__input(type="radio", name="product-category-group")
+					span.control__icon
+					span.control__text Аксессуары
+
 		.shop-list__content
+			.product-grid
+				ul.product-grid__list
+					li.product-grid__cell
+						.product
+							img.product__image(src="img/content/product-1.jpg")
+							.product__body
+								.product__name Baxter of California
+								.product__desc Набор для путешествий
+
+								.product-control
+									button.product-control__act.btn(type="button") купить
+									.product-control__price 500 руб.
+
+					li.product-grid__cell
+						.product
+							img.product__image(src="img/content/product-2.jpg")
+							.product__body
+								.product__name Baxter of California
+								.product__desc Увлажняющий кондиционер
+
+								.product-control
+									button.product-control__act.btn(type="button") купить
+									.product-control__price 750 руб.
+
+					li.product-grid__cell
+						.product
+							img.product__image(src="img/content/product-3.jpg")
+							.product__body
+								.product__name SAUVECITO
+								.product__desc Гель для волос
+
+								.product-control
+									button.product-control__act.btn(type="button") купить
+									.product-control__price 500 руб.
+
+					li.product-grid__cell
+						.product
+							img.product__image(src="img/content/product-4.jpg")
+							.product__body
+								.product__name American crew
+								.product__desc Глина для укладки волос
+
+								.product-control
+									button.product-control__act.btn(type="button") купить
+									.product-control__price 500 руб.
+
+					li.product-grid__cell
+						.product
+							img.product__image(src="img/content/product-5.jpg")
+							.product__body
+								.product__name AMERICAN CREW
+								.product__desc Гель для волос
+
+								.product-control
+									button.product-control__act.btn(type="button") купить
+									.product-control__price 500 руб.
+
+					li.product-grid__cell
+						.product
+							img.product__image(src="img/content/product-6.jpg")
+							.product__body
+								.product__name Baxter of California
+								.product__desc Набор для бритья
+
+								.product-control
+									button.product-control__act.btn(type="button") купить
+									.product-control__price 500 руб.
+
+				ul.paginator.product-grid__paging
+					li.paginator__item
+						a.paginator__link.btn 1
+					li.paginator__item.paginator__item_active
+						a.paginator__link.btn 2
+					li.paginator__item
+						a.paginator__link.btn 3
+					li.paginator__item
+						a.paginator__link.btn 4

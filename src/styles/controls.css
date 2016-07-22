@@ -97,7 +97,8 @@
 	.control__text {
 		margin-left: 43px;
 		display: block;
-		line-height: 20px;
+		padding-top: 1px;
+		line-height: 18px;
 	}
 
 	.control__input:focus + .control__icon,
@@ -106,11 +107,15 @@
 		color:#663d15;
 	}
 
-	.control__input:disabled + .control__icon,
-	.control__input:disabled ~ .control__text {
-		opacity: .4;
-		color: inherit;
+	.control__input:disabled {
+		cursor: default;
 	}
+
+		.control__input:disabled + .control__icon,
+		.control__input:disabled ~ .control__text {
+			color: #aaa;
+			cursor: default;
+		}
 
 	/* чекбоксы */
 	.control_checkbox .control__icon::before,
