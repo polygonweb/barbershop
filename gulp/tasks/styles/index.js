@@ -20,6 +20,9 @@ var processors = [
     })
 ];
 
+const isMax = mq => /max-width/.test(mq);
+const isMin = mq => /min-width/.test(mq);
+
 function sortMediaQueries(a, b) {
     let A = a.replace(/\D/g, '');
     let B = b.replace(/\D/g, '');
@@ -37,18 +40,10 @@ function sortMediaQueries(a, b) {
     return 1;
 };
 
-function isMax(mq) {
-    return /max-width/.test(mq);
-}
-
-function isMin(mq) {
-    return /min-width/.test(mq);
-}
-
 
 module.exports = (gulp, plugins, config) => () => {
     return gulp
-        .src(`${config.paths.src.stylesMain}`)
+        .src(config.src)
         .pipe(plugins.plumber({
             errorHandler: plugins.notify.onError(function(err) {
                 return {
@@ -60,9 +55,9 @@ module.exports = (gulp, plugins, config) => () => {
                 };
             })
         }))
-        .pipe(plugins.if(!config.production, plugins.sourcemaps.init(), plugins.util.noop()))
+        .pipe(plugins.if(!config.isProdMode, plugins.sourcemaps.init(), plugins.util.noop()))
         .pipe(plugins.postcss(processors))
-        .pipe(plugins.if(!config.production, plugins.sourcemaps.write(), plugins.util.noop()))
-        .pipe(plugins.if(!config.production, plugins.util.noop(), plugins.postcss([csso()])))
-        .pipe(gulp.dest(config.paths.build.styles))
+        .pipe(plugins.if(!config.isProdMode, plugins.sourcemaps.write(), plugins.util.noop()))
+        .pipe(plugins.if(!config.isProdMode, plugins.util.noop(), plugins.postcss([csso()])))
+        .pipe(gulp.dest(config.dest))
 };

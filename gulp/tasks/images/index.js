@@ -2,13 +2,11 @@
  * Copy and compress images
  */
 module.exports = (gulp, plugins, config) => () => {
-    let src = `${config.paths.src.img}**/*.*`;
-    let dest = `${config.paths.build.img}`;
+    let src = config.src;
+    let dest = config.dest;
 
     return gulp
-        .src(src, {
-            since: gulp.lastRun(config.taskName)
-        })
+        .src(src, { since: gulp.lastRun(config.taskName) })
         .pipe(plugins.plumber({
             errorHandler: plugins.notify.onError({
                 title: '<%= options.taskName %>',

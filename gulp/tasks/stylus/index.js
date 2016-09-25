@@ -47,8 +47,8 @@ function isMin(mq) {
 
 module.exports = (gulp, plugins, config) => () => {
     return gulp
-        .src(`${config.paths.src.styles}index.styl`)
-        .pipe(plugins.if(!config.production, plugins.sourcemaps.init(), plugins.util.noop()))
+        .src(config.src)
+        .pipe(plugins.if(!config.isProdMode, plugins.sourcemaps.init(), plugins.util.noop()))
         .pipe(plugins.plumber({
             errorHandler: plugins.notify.onError({
                 title: '<%= options.taskName %>',
@@ -65,7 +65,7 @@ module.exports = (gulp, plugins, config) => () => {
             compress: false
         }))
         .pipe(plugins.postcss(processors))
-        .pipe(plugins.if(!config.production, plugins.sourcemaps.write(), plugins.util.noop()))
-        .pipe(plugins.if(!config.production, plugins.util.noop(), plugins.postcss([csso()])))
+        .pipe(plugins.if(!config.isProdMode, plugins.sourcemaps.write(), plugins.util.noop()))
+        .pipe(plugins.if(!config.isProdMode, plugins.util.noop(), plugins.postcss([csso()])))
         .pipe(gulp.dest(config.paths.build.styles))
 };

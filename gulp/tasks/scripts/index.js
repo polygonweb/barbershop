@@ -2,7 +2,7 @@
  * Scripts
  */
 module.exports = (gulp, plugins, config) => () => {
-    return gulp.src(`${config.paths.src.scripts}main.js`)
+    return gulp.src(config.src)
         .pipe(plugins.plumber({
             errorHandler: plugins.notify.onError({
                 title: '<%= options.taskName %>',
@@ -12,12 +12,7 @@ module.exports = (gulp, plugins, config) => () => {
                 }
             })
         }))
-        .pipe(plugins.include({
-            includePaths: [
-                'node_modules/',
-                `${config.paths.src.scripts}`
-            ]
-        }))
-        .pipe(plugins.if(config.production, plugins.uglify(), plugins.util.noop()))
-        .pipe(gulp.dest(`${config.paths.build.scripts}`));
+        .pipe(plugins.include(config.options))
+        .pipe(plugins.if(config.isProdMode, plugins.uglify(), plugins.util.noop()))
+        .pipe(gulp.dest(config.dest));
 };
