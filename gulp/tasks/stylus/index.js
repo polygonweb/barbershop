@@ -67,5 +67,5 @@ module.exports = (gulp, plugins, config) => () => {
         .pipe(plugins.postcss(processors))
         .pipe(plugins.if(!config.isProdMode, plugins.sourcemaps.write(), plugins.util.noop()))
         .pipe(plugins.if(!config.isProdMode, plugins.util.noop(), plugins.postcss([csso()])))
-        .pipe(gulp.dest(config.paths.build.styles))
+        .pipe(gulp.dest(config.dest))
 };
