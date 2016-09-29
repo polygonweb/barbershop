@@ -2,17 +2,16 @@
  * Scripts
  */
 module.exports = (gulp, plugins, config) => () => {
-    return gulp.src(config.src)
-        .pipe(plugins.plumber({
-            errorHandler: plugins.notify.onError({
-                title: '<%= options.taskName %>',
-                message: '<%= error.message %>',
-                templateOptions: {
-                    taskName: config.taskName
-                }
-            })
-        }))
-        .pipe(plugins.include(config.options))
-        .pipe(plugins.if(config.isProdMode, plugins.uglify(), plugins.util.noop()))
-        .pipe(gulp.dest(config.dest));
+    return plugins.combiner(
+        gulp.src(config.src),
+        plugins.include(config.options),
+        plugins.if(config.isProdMode, plugins.uglify(), plugins.util.noop()),
+        gulp.dest(config.dest)
+    ).on('error', plugins.notify.onError({
+        title: '<%= options.taskName %>',
+        message: '<%= error.message %>',
+        templateOptions: {
+            taskName: config.taskName
+        }
+    }));
 };

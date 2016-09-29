@@ -1,5 +1,9 @@
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')();
+plugins.combiner = function() {
+	let combiner = require('stream-combiner2').obj;
+	return combiner.apply(null, arguments);
+};
 
 const defineTask = require('./gulp/utils/defineTask')(gulp, plugins);
 
@@ -87,7 +91,7 @@ defineTask('sprite', './gulp/tasks/sprite', {
 		// retinaImgName: 'icons@2x.png',
 		cssName: 'sprite.css',
 		// cssTemplate: path.join(__dirname, 'sprite-template.hbs'),
-		cssTemplate: path.join('./gulp/tasks/server/', 'sprite-template.hbs'),
+		cssTemplate: path.join('./gulp/tasks/sprite/', 'sprite-template.hbs'),
 		imgPath: `${config.paths.build.img}icons.png`,
 		cssFormat: 'css',
 		padding: 0
@@ -134,7 +138,7 @@ defineTask('svg-sprite', './gulp/tasks/svg-sprite', {
 
 
 // стили
-defineTask('styles', './gulp/tasks/styles', {
+defineTask('styles', './gulp/tasks/stylus', {
 	isProdMode: config.production,
 	src: config.paths.src.stylesMain,
 	dest: config.paths.build.styles,

@@ -3,9 +3,15 @@
  */
 
 module.exports = (gulp, plugins, config) => () => {
-    const errorHandler = require('../../utils/errorHandler.js');
-    return gulp.src(config.src)
-        .pipe(plugins.svgSprite(config.svgSpriteConfig))
-        .on('error', errorHandler)
-        .pipe(gulp.dest(config.dest));
+	return plugins.combiner(
+		gulp.src(config.src),
+		plugins.svgSprite(config.svgSpriteConfig),
+		gulp.dest(config.dest)
+	).on('error', plugins.notify.onError({
+		title: '<%= options.taskName %>',
+		message: '<%= error.message %>',
+		templateOptions: {
+			taskName: config.taskName
+		}
+	}));
 };

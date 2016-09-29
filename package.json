@@ -22,7 +22,8 @@
     "gulp.spritesmith": "^6.2.1",
     "postcss-cssnext": "^2.5.2",
     "postcss-csso": "^1.1.1",
-    "postcss-import": "^8.1.1"
+    "postcss-import": "^8.1.1",
+    "stream-combiner2": "^1.1.1"
   },
   "scripts": {
     "gulp": "gulp",
