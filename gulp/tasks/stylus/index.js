@@ -44,7 +44,7 @@ function isMin(mq) {
 
 
 module.exports = (gulp, plugins, config) => () => {
-	return plugins.combiner(
+	return plugins.combiner([
 		gulp.src(config.src),
 		plugins.if(!config.isProdMode, plugins.sourcemaps.init(), plugins.util.noop()),
 		plugins.stylus({
@@ -57,7 +57,7 @@ module.exports = (gulp, plugins, config) => () => {
 		plugins.if(!config.isProdMode, plugins.sourcemaps.write(), plugins.util.noop()),
 		plugins.if(!config.isProdMode, plugins.util.noop(), plugins.postcss([csso()])),
 		gulp.dest(config.dest)
-	).on('error', plugins.notify.onError({
+	]).on('error', plugins.notify.onError({
 		title: '<%= options.taskName %>',
 		message: '<%= error.message %>',
 		templateOptions: {

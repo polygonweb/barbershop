@@ -8,7 +8,7 @@ module.exports = {
 
     paths: {
         build: {
-            root: 'build/',
+            root: './build/',
             templates: './build/',
             styles: './build/css/',
             scripts: './build/js/',
