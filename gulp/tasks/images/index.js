@@ -7,11 +7,5 @@ module.exports = (gulp, plugins, config) => () => {
 		plugins.newer(config.dest),
 		plugins.imagemin(),
 		gulp.dest(config.dest)
-	).on('error', plugins.notify.onError({
-		title: '<%= options.taskName %>',
-		message: '<%= error.message %>',
-		templateOptions: {
-			taskName: config.taskName
-		}
-	}));
+	).on('error', config.onError);
 };

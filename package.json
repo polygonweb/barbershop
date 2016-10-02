@@ -24,7 +24,8 @@
     "postcss-cssnext": "^2.5.2",
     "postcss-csso": "^1.1.1",
     "postcss-import": "^8.1.1",
-    "stream-combiner2": "^1.1.1"
+    "stream-combiner2": "^1.1.1",
+    "vinyl-buffer": "^1.0.0"
   },
   "scripts": {
     "gulp": "gulp",

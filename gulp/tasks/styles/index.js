@@ -49,11 +49,5 @@ module.exports = (gulp, plugins, config) => () => {
 		plugins.if(!config.isProdMode, plugins.sourcemaps.write(), plugins.util.noop()),
 		plugins.if(!config.isProdMode, plugins.util.noop(), plugins.postcss([csso()])),
 		gulp.dest(config.dest)
-	).on('error', plugins.notify.onError({
-		title: '<%= options.taskName %>',
-		message: '<%= error.message %>',
-		templateOptions: {
-			taskName: config.taskName
-		}
-	}));
+	).on('error', config.onError);
 };

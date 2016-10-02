@@ -81,20 +81,25 @@ defineTask('server', './gulp/tasks/server', {
 
 // спрайт для растровых картинок
 defineTask('sprite', './gulp/tasks/sprite', {
+	isProdMode: config.production,
 	src: `${config.paths.src.img}sprite/**/*.png`,
 	stylesDest: config.paths.src.styles,
 	imgDest: config.paths.build.img,
 	spriteOptions: {
 		algorithm: 'binary-tree',
+		padding: 0,
+		algorithmOpts: {
+			sort: false
+		},
 		imgName: 'icons.png',
+		imgPath: `${config.paths.build.img}icons.png`,
 		// retinaSrcFilter: '*@2x.png',
 		// retinaImgName: 'icons@2x.png',
-		cssName: 'sprite.css',
-		// cssTemplate: path.join(__dirname, 'sprite-template.hbs'),
-		cssTemplate: path.join('./gulp/tasks/sprite/', 'sprite-template.hbs'),
-		imgPath: `${config.paths.build.img}icons.png`,
-		cssFormat: 'css',
-		padding: 0
+		cssTemplate: './gulp/tasks/sprite/sprite-template.stylus.hbs',
+		// cssName: 'sprite.css',
+		// cssFormat: 'css',
+		cssName: 'sprite.styl',
+		cssFormat: 'stylus',
 	}
 }, 'Спрайт для растровых картинок');
 
