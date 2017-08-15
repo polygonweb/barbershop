@@ -25,7 +25,7 @@
 
 		.features__title:after {
 			content: '';
-			margin: 15px auto 33px;
+			margin: 16px auto 32px;
 			transform: rotate(45deg);
 			display: block;
 			width: 20px;

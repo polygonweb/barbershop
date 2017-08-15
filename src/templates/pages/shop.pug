@@ -1,7 +1,7 @@
 extends ../partials/master.pug
 
 block blockTitle
-	- var pageTitle = 'магазин'
+	- var pageTitle = 'Магазин'
 
 block prepend blockHeadCSS
 
@@ -20,154 +20,38 @@ block blockPage
 
 block append pageContent
 
-	h1.title barbershop borodinski — магазин
+	h1.title Средства для ухода
 
-	ul.breadcrumbs
-		li.breadcrumbs__item
-			a(href="#404").breadcrumbs__text главная
-		li.breadcrumbs__item
-			a(href="#404").breadcrumbs__text магазин
-		li.breadcrumbs__item
-			a(href="#404").breadcrumbs__text средства для ухода
-
+	+breadcrumbs([
+		{ text: 'главная', link: 'javascript:void(0)' },
+		{ text: 'магазин', link: 'javascript:void(0)' },
+		{ text: 'средства для ухода', link: 'javascript:void(0)' }
+	])
 
 	.shop-list
-		form.shop-list__filter.filter
+		form.shop-list__filter.filter(name="product-filter", method="GET")
 			fieldset.filter__set
-				legend.sub-title производители
-				label.control.control_checkbox.filter__control
-					input.control__input(type="checkbox", checked)
-					span.control__icon
-					span.control__text Baxter of California
-
-				label.control.control_checkbox.filter__control
-					input.control__input(type="checkbox")
-					span.control__icon
-					span.control__text Mr Natty
-
-				label.control.control_checkbox.filter__control
-					input.control__input(type="checkbox", checked)
-					span.control__icon
-					span.control__text Suavecito
-
-				label.control.control_checkbox.filter__control
-					input.control__input(type="checkbox", checked)
-					span.control__icon
-					span.control__text Suavecito
-
-				label.control.control_checkbox.filter__control
-					input.control__input(type="checkbox")
-					span.control__icon
-					span.control__text Malin+Goetz
-
-				label.control.control_checkbox.filter__control
-					input.control__input(type="checkbox", checked)
-					span.control__icon
-					span.control__text Malin+Goetz
-
-				label.control.control_checkbox.filter__control
-					input.control__input(type="checkbox", checked)
-					span.control__icon
-					span.control__text Murray’s
-
-				label.control.control_checkbox.filter__control
-					input.control__input(type="checkbox", checked, disabled)
-					span.control__icon
-					span.control__text American Crew
+				legend.filter__title.sub-title производители
+				each item in filter.vendors
+					+control({
+						type: "checkbox",
+						name: "vendors[]",
+						value: item.value,
+						checked: item.isChecked
+					})(class="filter__control")
+						| #{item.title}
 
 			fieldset.filter__set
-				legend.sub-title группы товаров
+				legend.filter__title.sub-title группы товаров
+				each item in filter.productGroups
+					+control({
+						type: "radio",
+						name: "product-category-group",
+						value: item.value
+					})(class="filter__control")
+						| #{item.title}
 
-				label.control.control_radio.filter__control
-					input.control__input(type="radio", name="product-category-group")
-					span.control__icon
-					span.control__text Бритвенные  принадлежности
-
-				label.control.control_radio.filter__control
-					input.control__input(type="radio", name="product-category-group")
-					span.control__icon
-					span.control__text Средства для ухода
-
-				label.control.control_radio.filter__control
-					input.control__input(type="radio", name="product-category-group")
-					span.control__icon
-					span.control__text Аксессуары
+			button(type="submit").btn.filter__btn Показать
 
 		.shop-list__content
-			.product-grid
-				ul.product-grid__list
-					li.product-grid__cell
-						.product
-							img.product__image(src="img/content/product-1.jpg")
-							.product__body
-								.product__name Baxter of California
-								.product__desc Набор для путешествий
-
-								.product-control
-									button.product-control__act.btn(type="button") купить
-									.product-control__price 500 руб.
-
-					li.product-grid__cell
-						.product
-							img.product__image(src="img/content/product-2.jpg")
-							.product__body
-								.product__name Baxter of California
-								.product__desc Увлажняющий кондиционер
-
-								.product-control
-									button.product-control__act.btn(type="button") купить
-									.product-control__price 750 руб.
-
-					li.product-grid__cell
-						.product
-							img.product__image(src="img/content/product-3.jpg")
-							.product__body
-								.product__name SAUVECITO
-								.product__desc Гель для волос
-
-								.product-control
-									button.product-control__act.btn(type="button") купить
-									.product-control__price 500 руб.
-
-					li.product-grid__cell
-						.product
-							img.product__image(src="img/content/product-4.jpg")
-							.product__body
-								.product__name American crew
-								.product__desc Глина для укладки волос
-
-								.product-control
-									button.product-control__act.btn(type="button") купить
-									.product-control__price 500 руб.
-
-					li.product-grid__cell
-						.product
-							img.product__image(src="img/content/product-5.jpg")
-							.product__body
-								.product__name AMERICAN CREW
-								.product__desc Гель для волос
-
-								.product-control
-									button.product-control__act.btn(type="button") купить
-									.product-control__price 500 руб.
-
-					li.product-grid__cell
-						.product
-							img.product__image(src="img/content/product-6.jpg")
-							.product__body
-								.product__name Baxter of California
-								.product__desc Набор для бритья
-
-								.product-control
-									button.product-control__act.btn(type="button") купить
-									.product-control__price 500 руб.
-
-				ul.paginator.product-grid__paging
-					li.paginator__item
-						a.paginator__link.btn 1
-					li.paginator__item.paginator__item_active
-						a.paginator__link.btn 2
-					li.paginator__item
-						a.paginator__link.btn 3
-					li.paginator__item
-						a.paginator__link.btn 4
+			+productGrid(products)

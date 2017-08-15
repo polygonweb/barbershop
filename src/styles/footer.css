@@ -4,11 +4,15 @@
 	height: 1px;
 	font-weight: bold;
 	color: #fff;
-	background: url("../img/dark-pattern.png") #232323;
 	background:
-		linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)) repeat-x 50% 0 /100% 40px,
-		url("../img/dark-pattern.png") #232323;
+		linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, 0)) repeat-x 50% 0 / 100% 40px,
+		url("../img/dark-pattern.png")
+		#232323;
 }
+
+	.page_index .page-footer {
+		background: url("../img/dark-pattern.png") #232323;
+	}
 
 	.page-footer__inner {
 		padding-top:    58px;
@@ -42,7 +46,7 @@
 
 
 	.page-footer__title {
-		margin-bottom: 6px;
+		margin-bottom: 12px;
 	}
 
 
@@ -53,7 +57,16 @@
 
 		.page-footer__link:hover {
 			text-decoration: underline;
+			color: #c59769;
 		}
+
+		.page-footer__link_mod {
+			text-decoration: underline;
+		}
+
+			.page-footer__link_mod:hover {
+				text-decoration: none;
+			}
 
 
 	.page-footer .btn:hover {

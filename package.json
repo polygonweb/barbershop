@@ -1,8 +1,10 @@
 {
   "devDependencies": {
     "browser-sync": "^2.12.5",
+    "cross-env": "^5.0.5",
     "css-mqpacker": "^4.0.1",
     "del": "^2.2.0",
+    "gh-pages": "^1.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-cli": "^1.2.1",
     "gulp-if": "^2.0.1",
@@ -28,7 +30,7 @@
     "vinyl-buffer": "^1.0.0"
   },
   "scripts": {
-    "gulp": "gulp",
+    "start": "gulp",
     "gulp-info": "gulp --version && gulp --tasks && gulp --verify",
     "clean": "gulp clean",
     "server": "gulp server",
@@ -39,13 +41,15 @@
     "svg-sprite": "gulp svg-sprite",
     "stylus": "gulp stylus",
     "scripts": "gulp scripts",
-    "build": "gulp build",
-    "prod": "gulp build --prod",
+    "build": "gulp build --prod",
+    "prod": "gulp build",
     "dev": "gulp dev",
     "zip": "gulp zip",
-    "deploy": "git subtree push --prefix build origin gh-pages"
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
-    "normalize.css": "^4.2.0"
+    "dom4": "^1.8.5",
+    "normalize.css": "^4.2.0",
+    "wicg-focus-ring": "^1.0.1"
   }
 }

@@ -1,0 +1,8 @@
+.subscription-form {}
+
+	.subscription-form__footer {
+		margin-top: 14px;
+		display: inline-block;
+		vertical-align: top;
+		width: 100%;
+	}

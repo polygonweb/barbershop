@@ -1,0 +1,23 @@
++modal({
+	id: "auth-modal",
+	dialogClass: "auth-dialog"
+})
+	form.auth-form()
+		h2.title.auth-form__title Личный кабинет
+		p.auth-form__desc Введите пожалуйста свой логин и пароль
+
+		input.auth-form__input.auth-form__input_user.input(type="text", placeholder="ЛОГИН", required)
+		input.auth-form__input.auth-form__input_password.input(type="password", placeholder="ПАРОЛЬ", required)
+
+		.auth-form__options
+			+control({
+				type: 'checkbox',
+				checked: true,
+				name: 'store',
+				value: 'store'
+			}).auth-form__remember
+				| Запомните меня
+
+			a.text-link.auth-form__forgot(href="#404") Я ЗАБЫЛ ПАРОЛЬ!
+
+		button.btn.auth-form__submit(type="submit") ВОЙТИ

@@ -1,0 +1,32 @@
+extends ../partials/master.pug
+
+block blockTitle
+	- var pageTitle = 'Магазин'
+
+block prepend blockHeadCSS
+
+block append blockHeadCSS
+
+block prepend blockHeadJS
+
+block append blockHeadJS
+
+block prepend blockBodyJS
+
+block append blockBodyJS
+
+block blockPage
+	- var classNames = ''
+
+block append pageContent
+
+	h1.title #{productCard.title}
+
+	+breadcrumbs([
+		{ text: 'главная', link: 'index.html' },
+		{ text: 'магазин', link: 'shop.html' },
+		{ text: 'средства для ухода', link: 'shop.html' },
+		{ text: 'набор для путешествий «Baxter of California»', link: 'javascript:void(0)' }
+	])
+
+	+productCard(productCard)

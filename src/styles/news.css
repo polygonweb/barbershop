@@ -3,7 +3,7 @@
  */
 .news-list {
 	margin: 0;
-	padding: 0;
+	padding: 0 0 1px;
 	list-style-type: none;
 }
 
@@ -11,12 +11,10 @@
 		margin-bottom: 26px;
 	}
 
-	.news-list__controls {
-		padding-top: 5px;
-	}
 
-
-.news-article {}
+.news-article {
+	display: block;
+}
 
 	.news-article__text {
 		display: block;

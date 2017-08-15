@@ -5,4 +5,122 @@ mixin ie(condition)
 	block
 	= '\n'
 	| <![endif]-->
-	
+
+
+mixin breadcrumbs(items)
+	ul.breadcrumbs
+		each item in items
+			li.breadcrumbs__item
+				a(href=item.link).breadcrumbs__text #{item.text}
+
+
+mixin control(props)
+	label.control(class="control_" + props.type)&attributes(attributes)
+		input.control__input(
+			type=props.type,
+			checked=props.checked,
+			name=props.name,
+			value=props.value
+		)
+		span.control__icon
+		span.control__text
+			if block
+				block
+			else
+				#{props.label || ""}
+
+
+mixin modal(attrs)
+	.modal(class=attrs.class, id=attrs.id)
+		.modal__outer
+			.modal__inner
+				.modal__dialog(class=attrs.dialogClass, style=attrs.style)
+					button.modal__close(type="button", title="Закрыть")
+					block
+
+
+mixin productMiniCard(attrs)
+	.product
+		img.product__image(src=attrs.image)
+		.product__body
+			a.product__name(href=attrs.link) #{attrs.title}
+			.product__desc #{attrs.desc}
+
+			.product-control
+				button.product-control__act.btn(type="button") купить
+				.product-control__price #{attrs.price} руб.
+
+mixin paging(props)
+	- var { start, end, active } = props;
+	ul.paginator&attributes(attributes)
+		while (start <= end)
+			li.paginator__item(class={"paginator__item_active": start === active})
+				a.paginator__link.btn(href="#/?page=" + start) #{start++}
+
+mixin productGrid(items)
+	.product-grid
+		ul.product-grid__list
+			each item in items
+				li.product-grid__cell
+					+productMiniCard(item)
+	+paging({ start: 1, end: 4, active: 2 })(class="product-grid__paging")
+
+mixin productGallery(images)
+	.product-gallery
+		.product-gallery__image.product-gallery__image_main.product-image
+			img.product-image__content(src=images[0].url, alt="", width="460", height="498")
+
+		each image in images
+			a(href=image.url, target="_blank").product-gallery__image.product-image
+				img.product-image__content(src=image.preview, alt="", width="140", height="149")
+
+mixin productCard(productCard)
+	.product-card
+		.grid
+			.grid__cell.grid__cell_6-12
+				+productGallery(productCard.images)
+
+			.grid__cell.grid__cell_5-12.grid__cell_offset_1-12
+				.product-card__meta.product-meta
+					.product-meta__available #{productCard.isAvailable ? 'есть' : 'нет'} в наличии
+					.product-meta__article Артикул: #{productCard.article}
+
+				p.product-card__desc #{productCard.desc}
+
+				.product-card__control.product-control.product-control_inline
+					button.product-control__act.btn(type="button") купить
+					.product-control__price #{productCard.price}
+
+				.sub-title В набор входят:
+				ul.list
+					each item in productCard.consist
+						li #{item}
+
+
+//- partials mixins
+
+mixin features(features)
+	ul.features
+		each item in features
+			li.features__item
+				b.features__title.title #{item.title}
+				p.features__text #{item.text}
+
+
+mixin newsList(list)
+	ul.news-list
+		each item in list
+			li.news-list__item
+				a(href="#404").news-article.text-link
+					span.news-article__text #{item.text}
+					time(datetime=item.date).news-article__date #{item.formatDate}
+
+mixin photoGallery(data)
+	.widget-gallery.widget-gallery_fallback
+		.widget-gallery__list
+			each url in data.urls
+				figure.widget-gallery__item(style="background-image: url(" + url + ")")
+		.widget__controls
+			button(type="button", data-prev).btn.widget__control назад
+			button(type="button", data-next).btn.widget__control вперед
+

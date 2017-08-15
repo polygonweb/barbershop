@@ -1,0 +1,26 @@
+$grid-cols = 12;
+$grid-gutter = 20px;
+
+.grid {
+	margin-left:  (-1*$grid-gutter/2);
+	margin-right: (-1*$grid-gutter/2);
+}
+
+	// 43
+
+	.grid__cell {
+		vertical-align: top;
+		display: inline-block;
+		box-sizing: border-box;
+		padding: 0 ($grid-gutter/2);
+	}
+
+	for $index in (1..$grid-cols)
+		.grid__cell_{$index}-{$grid-cols} {
+			width: "calc(100% * %s / %s)" % ($index $grid-cols)
+		}
+
+	for $index in (1...$grid-cols)
+		.grid__cell_offset_{$index}-{$grid-cols} {
+			margin-left: "calc(100% * %s / %s)" % ($index $grid-cols)
+		}

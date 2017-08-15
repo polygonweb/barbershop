@@ -1,3 +1,4 @@
+const path = require('path');
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')();
 plugins.combiner = function() {
@@ -9,8 +10,6 @@ const defineTask = require('./gulp/utils/defineTask')(gulp, plugins);
 
 let config = require('./gulp/config');
 config.production = (!!plugins.util.env['prod']) ? true : false;
-
-let path = require('path');
 
 
 /**
@@ -37,10 +36,18 @@ defineTask('images', './gulp/tasks/images', {
 }, 'Обработка изображений');
 
 
+// обработка favicon
+defineTask('favicon', './gulp/tasks/favicon', {
+	src: `${config.paths.src.favicon}`,
+	dest: `${config.paths.build.favicon}`
+}, 'Обработка favicon');
+
+
 // обработка html-страниц
 defineTask('templates', './gulp/tasks/templates', {
-	src: [config.paths.src.templates  + '*.pug'],
+	src: [config.paths.src.templates  + 'pages/*.pug'],
 	dest: config.paths.build.templates,
+	dataPath: path.resolve(config.paths.src.templates + '/data'),
 	engineOptions: {
 		locals: {}
 	}
@@ -70,10 +77,10 @@ defineTask('server', './gulp/tasks/server', {
 		},
 		files: config.paths.build.root + '**/*.*',
 		host: 'localhost',
-		port: 3000,
+		port: 8000,
 		notify: true,
 		injectChanges: true,
-		open: true,
+		open: false,
 		tunnel: false
 	}
 }, 'Запуск сервера');
@@ -167,6 +174,7 @@ gulp.task(
 		'clean',
 		gulp.parallel(
 			'fonts',
+			'favicon',
 			'images',
 			'templates',
 			'scripts',
@@ -181,7 +189,9 @@ gulp.task('watch', function(done) {
 	gulp.watch(`${config.paths.src.img}svg-sprite/**/*.svg`, gulp.parallel('svg-sprite'));
 	gulp.watch([`${config.paths.src.img}**/*.*`, `!${config.paths.src.img}sprite/**/*.png`, `!${config.paths.src.img}svg-sprite/**/*.svg`], gulp.parallel('images'));
 	gulp.watch(`${config.paths.src.styles}**/*.*`, gulp.parallel('styles'));
+	gulp.watch(`${config.paths.watch.scripts}`, gulp.parallel('scripts'));
 	gulp.watch(`${config.paths.watch.templates}`, gulp.parallel('templates'));
+	gulp.watch(`${config.paths.watch.favicon}`, gulp.parallel('favicon'));
 	done();
 });
 

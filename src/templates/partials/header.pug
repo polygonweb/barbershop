@@ -3,14 +3,18 @@ mixin pageHeader(menuItems, activeItem)
 		.page-header__inner.container
 			nav.page-header__nav
 				ul.nav
-					each item in menuItems
-						if item === activeItem.toLowerCase()
-							li.nav__item.nav__item_active
-								a(href="#404").nav__link #{item}
-						else
-							li.nav__item
-								a(href="#404").nav__link #{item}
+					each item, index in menuItems
+						- var isMain = item.text.toLowerCase() === 'главная';
+						li.nav__item(class={
+							'nav__item_active': item.text === activeItem.toLowerCase(),
+							'nav__item_home': isMain
+						})
+							a(href=item.link).nav__link
+								if (isMain)
+									img.nav__logo(src="img/head-logo.png", width="111" height="24" alt="Barbershop")
+								| #{item.text}
 
 			.page-header__user
-				.nav
-					a(href="#404").nav__link.enter-link Вход
+				ul.nav
+					li.nav__item
+						a(href="#404", data-auth-link).nav__link.enter-link Вход

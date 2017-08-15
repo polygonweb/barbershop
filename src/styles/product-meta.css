@@ -1,0 +1,16 @@
+.product-meta {}
+
+	.product-meta::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+	.product-meta__available {
+		float: left;
+	}
+
+	.product-meta__article {
+		float: right;
+		color: #aeaeae;
+	}

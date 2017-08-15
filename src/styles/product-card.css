@@ -1,0 +1,17 @@
+ .product-card {
+	 padding: 4px 0 10px;
+ }
+
+ 	.product-card__meta {
+		 margin-top: 20px;
+		 margin-bottom: 28px;
+	 }
+
+	.product-card__desc {
+		margin: 0 0 26px;
+	}
+
+	.product-card__control {
+		margin-bottom: 48px;
+		vertical-align: top;
+	}

@@ -5,6 +5,10 @@
 	background: url("../img/light-pattern.png") #f8f5f2;
 }
 
+	.main-widget:last-of-type {
+		margin-bottom: 65px;
+	}
+
 	.main-widget::before {
 		content: '';
 		position: absolute;
@@ -25,11 +29,12 @@
 		box-sizing: border-box;
 		width: 50%;
 		/* отступ меньше макетного, чтобы заголовки влазили в одну строку */
-		padding: 47px 70px 54px;
+		padding: 47px 80px 54px;
 	}
 
 	.main-widget__title {
-		margin-bottom: 24px;
+		margin-bottom: 28px;
+		white-space: nowrap;
 	}
 
 

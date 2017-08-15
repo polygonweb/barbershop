@@ -22,39 +22,32 @@ block append pageContent
 
 	h1.title barbershop borodinski — прайс-лист
 
-	ul.breadcrumbs
-		li.breadcrumbs__item
-			a(href="#404").breadcrumbs__text главная
-		li.breadcrumbs__item
-			a(href="#404").breadcrumbs__text прайс-лист
-
+	+breadcrumbs([
+		{ text: 'главная', link: 'javascript:void(0)' },
+		{ text: 'прайс-лист', link: 'javascript:void(0)' }
+	])
 
 	h2.heading истинно мужская классика
 
-	.grid
-		.grid__cell.grid__cell_half
-			h2.sub-title мы используем только  лучшие средства:
-			ul.list.list_expand
-				li Baxter of California
-				li Mr Natty
-				li Suavecito
-				li Malin+Goetz
+	.price-block
+		.grid
+			.grid__cell.grid__cell_5-12
+				h2.sub-title.price-block__title мы используем #[br] только  лучшие средства:
+				ul.list.list_expand
+					each item in bestVendors
+						li #{item}
 
-		.grid__cell.grid__cell_half
-			h2.sub-title цены на услуги наших мастеров:
-			table.table
-				tbody
-					tr
-						th стрижка
-						td 1500 р.
-					tr
-						th стрижка бороды
-						td 500 р.
-					tr
-						th накрутка усов
-						td 350 р.
+			.grid__cell.grid__cell_6-12.grid__cell_offset_1-12
+				h2.sub-title.price-block__title цены на услуги #[br] наших мастеров:
+				table.table
+					tbody
+						each value, key in priceList
+							tr
+								th #{key}
+								td #{value}
 
-	h2.sub-title несколько слов о нас:
-	.grid
-		.grid__cell.grid__cell_half Наша парикмахерская занимается исключительно мужскими стрижками. Стрижка каждого клиента для нас - это уникальная и продуманная до мелочей работа. Мы не работаем на количество, мы делаем качество.
-		.grid__cell.grid__cell_half Наша парикмахерская занимается исключительно мужскими стрижками. Стрижка каждого клиента для нас - это уникальная и продуманная до мелочей работа. Мы не работаем на количество, мы делаем качество.
+	.price-block
+		h2.sub-title.price-block__title несколько слов о нас:
+		.grid
+			.grid__cell.grid__cell_5-12 Наша парикмахерская занимается исключительно мужскими стрижками. Стрижка каждого клиента для нас - это уникальная и продуманная до мелочей работа. Мы не работаем на количество, мы делаем качество.
+			.grid__cell.grid__cell_6-12.grid__cell_offset_1-12 Наша парикмахерская занимается исключительно мужскими стрижками. Стрижка каждого клиента для нас - это уникальная и продуманная до мелочей работа. Мы не работаем на количество, мы делаем качество.

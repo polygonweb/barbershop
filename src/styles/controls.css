@@ -16,11 +16,27 @@
 	transition: .2s;
 }
 
-	.btn:hover,
 	.btn:focus {
+		outline: 0;
+	}
+
+	.btn:hover,
+	.btn.focus-ring {
 		color: #fff;
 		background: #663d15;
 		outline: 0;
+	}
+
+	.btn:focus-ring {
+		color: #fff;
+		background: #663d15;
+		outline: 0;
+	}
+
+	.btn_disabled {
+		opacity: 0.7;
+		background: #000;
+		cursor: not-allowed;
 	}
 
 
@@ -95,9 +111,11 @@
 		}
 
 	.control__text {
-		margin-left: 43px;
+		/* margin-left: 43px; */
+		margin-left: 32px;
 		display: block;
-		padding-top: 1px;
+		/* padding-top: 1px; */
+		padding-top: 2px;
 		line-height: 18px;
 	}
 

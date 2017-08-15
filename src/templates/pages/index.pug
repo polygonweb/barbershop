@@ -22,55 +22,18 @@ block append pageContent
 
 	h1.logo(title="BarberShop Borodinski") BarberShop Borodinski
 
-
-	ul.features
-		li.features__item
-			h2.features__title.sub-title быстро
-			p.features__text
-				| мы делаем свою работу быстро! два часа пролетят незаметно и вы — счастливый обладетель стильной стрижки-минутки!
-
-		li.features__item
-			h2.features__title.sub-title круто
-			p.features__text
-				| забудьте, как вы стриглись раньше. мы сделаем из вас звезду футбола или кино! во всяком случае внешне.
-
-
-		li.features__item
-			h2.features__title.sub-title дорого
-			p.features__text
-				| наши мастера — профессионалы своего дела и не могут стоить дешево. к тому же, разве цена не дает определеный статус?
-
+	+features(features)
 
 	.main-widget
 		.main-widget__cell
 			h2.main-widget__title.title новости
-			ul.news-list
-				li.news-list__item.news-article
-					a(href="#404").text-link.news-article__text нам наконец завезли ягермайстер! теперь вы можете пропустить стаканчик во время стрижки
-					time(datetime="2014-09-25").news-article__date 25 сентября
-
-				li.news-list__item.news-article
-					a(href="#404").text-link.news-article__text в нашей команде пополнение, борис «бритва» стригунец, обладетель множетсва титулов и наград пополнил наши стройные ряды
-					time(datetime="2014-09-19").news-article__date 19 сентября
-
-				li.news-list__item.news-article
-					a(href="#404").text-link.news-article__text нам наконец завезли ягермайстер! теперь вы можете пропустить стаканчик во время стрижки
-					time(datetime="2014-08-12").news-article__date 12 августа
-
-			.widget__controls.news-list__controls
+			+newsList(newsList)
+			.widget__controls
 				a(href="#404").btn.widget__control все новости
-
-
 
 		.main-widget__cell
 			h2.main-widget__title.title фотогалерея
-			.widget-gallery
-				.widget-gallery__list
-					figure.widget-gallery__item(style="background-image: url('img/gallery-item.jpg')").widget-gallery__item_active
-					figure.widget-gallery__item(style="background-image: url('img/gallery-item-2.jpg')")
-				.widget__controls
-					a(href="#404").btn.widget__control назад
-					a(href="#404").btn.widget__control вперед
+			+photoGallery(photoGallery)
 
 
 	.main-widget
@@ -78,26 +41,40 @@ block append pageContent
 			h2.main-widget__title.title контактная информация
 			.paragraph
 				div barbershop «borodinski»
-				div адрес: г. москва, ул. собаки павлова, д. 13
+				div адрес: г. санкт-петербург, б. конюшенная, д. 19/8
 				div
-					a(href="tel:+749566602666").text-link +7 (495) 666-02-666
+					| телефон: #[a(href="tel:+749566602666").text-link +7 (495) 666-02-666]
 
 			.paragraph
 				div ВРЕМЯ РАБОТЫ:
 				div ПН — ПТ: С 10:00 ДО 22:00
 				div СБ — ВС: С 10:00 ДО 19:00
 
-			div.widget__controls
-				a(href="#404").btn.widget__control как проехать
-				a(href="#404").btn.widget__control обратная связь
+			.widget
+				.widget__controls.contacts-toolbar
+					a(href=mapLink.full, target="_blank" data-modal='{ "target": "#map-modal", "action": "open" }').btn.widget__control как проехать
+					a(href="#404").btn.widget__control обратная связь
 
 		.main-widget__cell
 			h2.main-widget__title.title записаться
 			p.paragraph укажите желаемую дату и время и мы свяжемся с вами для подтверждения брони
-			form(action="", name="")
+			form(action="", name="").subscription-form.widget
 				.widget__controls
-					input.input.widget__control(name="", value="", placeholder="дата")
-					input.input.widget__control(name="", value="", placeholder="время")
-					input.input.widget__control(name="", value="", placeholder="ваше имя")
-					input.input.widget__control(name="", value="", placeholder="телефон")
-					button.btn.widget__control.widget__control_full отправить
+					input.input.widget__control(type="text" name="date", value="", placeholder="дата")
+					input.input.widget__control(type="text" name="time", value="", placeholder="время")
+					input.input.widget__control(type="text" name="name", value="", placeholder="ваше имя")
+					input.input.widget__control(type="text" name="phone", value="", placeholder="телефон")
+					.subscription-form__footer
+						button.btn.widget__control.widget__control_full отправить
+
+block append portals
+	+modal({id: "map-modal", class: "modal_align_middle"})
+		.contact-map
+			iframe(
+				src=mapLink.embed
+				width="768"
+				height="560"
+				frameborder="0"
+				style="border:0"
+				allowfullscreen
+			)
