@@ -42,17 +42,25 @@ function sortMediaQueries(a, b) {
 
 
 module.exports = (gulp, plugins, config) => () => {
-	console.log(config.isProdMode);
-	config.isProdMode && processors.push(csso({
-		restructure: false,
-		comments: false
-	}));
+	processors.concat(
+		!!config.isProdMode
+			? [
+				csso({
+					restructure: false,
+					comments: false
+				})
+			]
+			: []
+	);
 	return plugins.combiner(
 		gulp.src(config.src),
 		plugins.if(!config.isProdMode, plugins.sourcemaps.init(), plugins.util.noop()),
 		plugins.postcss(processors),
 		plugins.if(!config.isProdMode, plugins.sourcemaps.write(), plugins.util.noop()),
-		// plugins.if(!config.isProdMode, plugins.util.noop(), plugins.postcss([csso()])),
+		// plugins.if(!config.isProdMode, plugins.util.noop(), plugins.postcss([csso({
+		// 	restructure: false,
+		// 	comments: false
+		// })])),
 		gulp.dest(config.dest)
 	).on('error', config.onError);
 };
