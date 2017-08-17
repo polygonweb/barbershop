@@ -42,6 +42,8 @@ html(class="no-js", lang="ru")
 			href="https://fonts.gstatic.com/s/ptsansnarrow/v7/Q_pTky3Sc3ubRibGToTAYupmode525gDTwNyPqZGNXY.woff2"
 		)
 		link(rel="preload", as="script", href="js/main.js")
+		script.
+			document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 
 		block blockHeadCSS
 			link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,cyrillic")
