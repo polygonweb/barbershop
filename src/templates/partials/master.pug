@@ -46,6 +46,8 @@ html(class="no-js", lang="ru")
 			document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 
 		block blockHeadCSS
+			style
+				include loader/loader.css
 			link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,cyrillic")
 			link(rel="stylesheet", href="css/main.css")
 
@@ -62,6 +64,9 @@ html(class="no-js", lang="ru")
 
 	block blockPage
 	body.page(class=classNames)
+
+		include loader/loader
+
 		.page-inner
 			+pageHeader(menuItems, pageTitle)
 
