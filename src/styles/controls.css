@@ -12,6 +12,7 @@
 	text-transform: inherit;
 	color: #fff;
 	background: #000;
+	border-radius: 0;
 	cursor: pointer;
 	transition: .2s;
 }
